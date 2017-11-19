@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+<style>
+ .router-link-active{
+ 	color: red;
+ }
+</style>
+</head>
+<body>
+	<div id="app">
+       <h1>hello vue-router</h1>
+       <p>
+          <router-link to='/user/foo'>go to foo</router-link>
+          <router-link to='/user/bar'>go to bar</router-link>
+       </p>
+       <router-view></router-view>
+	</div>
+	<script>
+       const User = {
+       	   template : '<div> User {{$route.params.id}} </div>'
+       }
+       const router = new VueRouter({
+       	   routes : [
+       	      { path : '/user/:id', component : User }
+       	    ]
+       })
+       
+        const app = new Vue({ router }).$mount('#app')
+	</script>
+</body>
+</html>
